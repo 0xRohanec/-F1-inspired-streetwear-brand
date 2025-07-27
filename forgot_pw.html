@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar" class="navbar">
+            <a href="home.html"  class="nav-items"><img src="/assets/logo.png" height="40px" alt=""></a>
+            <a href="" class="nav-items nav-sitename"><strong>F1-StreetWear</strong></a>
+            <a href="login.html" class="nav-items">LogIn</a>
+            <a href="signup.html" class="nav-items">SignUp</a>
+            <a href="cart.html" class="nav-items nav-btn"><button>Cart</button></a>
+        </nav>
+    </header>
+    <main>
+        <div class="auth-container">
+    <form class="otp-form" id="otpForm">
+      <h2>Reset Password</h2>
+
+      <p>Select verification method:</p>
+      <div class="method-select">
+        <label><input type="radio" name="method" value="email" checked onchange="toggleMethod()"> Email</label>
+        <label><input type="radio" name="method" value="phone" onchange="toggleMethod()"> Phone</label>
+      </div>
+
+      <div id="emailInput">
+        <label for="email">Enter your email</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+      </div>
+
+      <div id="phoneInput" style="display:none;">
+        <label for="phone">Enter your phone number</label>
+        <input type="tel" id="phone" placeholder="e.g., 9876543210" />
+      </div>
+
+      <button type="button" onclick="sendOTP()">Send OTP</button>
+
+      <div id="otpSection" style="display:none; margin-top: 20px;">
+        <label for="otp">Enter OTP</label>
+        <input type="text" id="otp" maxlength="6" placeholder="123456" required />
+
+        <label for="newPassword">New Password</label>
+        <input type="password" id="newPassword" required placeholder="••••••••" />
+
+        <button type="button" onclick="verifyOTP()">Reset Password</button>
+      </div>
+
+      <p class="auth-links">
+        Remembered your password? <a href="login.html">Login</a>
+      </p>
+    </form>
+  </div>
+    </main>
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>F1-StreetWear</h2>
+      <p>Race into style. Street meets speed.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="category.html">Tees</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="cart.html">Cart</a>
+    </div>
+
+    <div class="footer-socials">
+      <a href="#"><img src="assets/instagram.svg" alt="Instagram" /></a>
+      <a href="#"><img src="assets/twitter-x.svg" alt="Twitter" /></a>
+      <a href="#"><img src="assets/facebook.svg" alt="Facebook" /></a>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2025 F1-StreetWear. All rights reserved.</p>
+</footer>
+<script>
+    function toggleMethod() {
+      const selected = document.querySelector('input[name="method"]:checked').value;
+      document.getElementById("emailInput").style.display = selected === "email" ? "block" : "none";
+      document.getElementById("phoneInput").style.display = selected === "phone" ? "block" : "none";
+    }
+
+    function sendOTP() {
+      const method = document.querySelector('input[name="method"]:checked').value;
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      if (method === "email" && email) {
+        alert("OTP sent to email: " + email);
+        document.getElementById("otpSection").style.display = "block";
+      } else if (method === "phone" && phone) {
+        alert("OTP sent to phone: " + phone);
+        document.getElementById("otpSection").style.display = "block";
+      } else {
+        alert("Please enter a valid " + method + " address.");
+      }
+    }
+
+    function verifyOTP() {
+      const otp = document.getElementById('otp').value;
+      const newPassword = document.getElementById('newPassword').value;
+      if (otp === "123456" && newPassword.length >= 6) {
+        alert("Password reset successfully!");
+        window.location.href = "login.html";
+      } else {
+        alert("Invalid OTP or password too short.");
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id="navbar" class="navbar">
+            <a href="home.html"  class="nav-items"><img src="/assets/logo.png" height="40px" alt=""></a>
+            <a href="" class="nav-items nav-sitename"><strong>F1-StreetWear</strong></a>
+            <a href="login.html" class="nav-items">LogIn</a>
+            <a href="signup.html" class="nav-items">SignUp</a>
+            <a href="cart.html" class="nav-items nav-btn"><button>Cart</button></a>
+        </nav>
+    </header>
+    <main>
+        <h2 style="text-align: center; margin-top: 20px;">All Tees</h2>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for a tee..." oninput="filterProducts()" />
+    </div>
+
+    <p id="emptyMessage" style="display:none; text-align: center; margin: 20px; color: #777;">No items match your search.</p>
+
+    <div class="product-grid" id="productGrid">
+      <div class="product-card" data-name="Speed Racer Tee">
+        <img src="assets/tees.jpeg" alt="Speed Racer Tee" />
+        <h3>Speed Racer Tee</h3>
+        <p>₹999</p>
+      </div>
+      <div class="product-card" data-name="F1 Blackout Tee">
+        <img src="assets/tees.jpeg" alt="F1 Blackout Tee" />
+        <h3>F1 Blackout Tee</h3>
+        <p>₹1099</p>
+      </div>
+      <div class="product-card" data-name="Drift Culture Tee">
+        <img src="assets/tees.jpeg" alt="Drift Culture Tee" />
+        <h3>Drift Culture Tee</h3>
+        <p>₹899</p>
+      </div>
+      <div class="product-card" data-name="Track Day Tee">
+        <img src="assets/tees.jpeg" alt="Track Day Tee" />
+        <h3>Track Day Tee</h3>
+        <p>₹1199</p>
+      </div>
+    </div>
+    </main>
+    <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h2>F1-StreetWear</h2>
+      <p>Race into style. Street meets speed.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="category.html">Tees</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="cart.html">Cart</a>
+    </div>
+
+    <div class="footer-socials">
+      <a href="#"><img src="assets/instagram.svg" alt="Instagram" /></a>
+      <a href="#"><img src="assets/twitter-x.svg" alt="Twitter" /></a>
+      <a href="#"><img src="assets/facebook.svg" alt="Facebook" /></a>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2025 F1-StreetWear. All rights reserved.</p>
+</footer>
+<script>
+    function filterProducts() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".product-card");
+      let found = false;
+
+      cards.forEach(card => {
+        const name = card.getAttribute("data-name").toLowerCase();
+        const match = name.includes(input);
+        card.style.display = match ? "block" : "none";
+        if (match) found = true;
+      });
+
+      document.getElementById("emptyMessage").style.display = found ? "none" : "block";
+    }
+  </script>
+
+</body>
+</html>
